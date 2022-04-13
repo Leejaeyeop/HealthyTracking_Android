@@ -40,4 +40,13 @@ class MarkerRepositoryImpl @Inject constructor(
 
              }
      }
+
+     override fun getMarkerByDistance(
+         east_boundary:Double,west_boundary:Double,southern_boundary:Double,northern_boundary:Double
+     ): Single<List<Marker>> {
+         return markerRemoteDataSource.getMarkersByDistance(east_boundary,west_boundary,southern_boundary,northern_boundary)
+             .flatMap {
+                 Single.just(mapperToMarker(it.markers))
+             }
+     }
  }

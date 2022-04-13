@@ -21,4 +21,11 @@ interface MarkerRemoteDataSource {
 
     fun getMarkersByNoted(
     ): Single<MarkerResponse>
+
+    fun getMarkersByDistance(
+        east_boundary:Double,
+        west_boundary:Double,
+        southern_boundary:Double,
+        northern_boundary:Double
+    ): Single<MarkerResponse>
 }

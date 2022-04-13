@@ -34,6 +34,14 @@ interface ApiInterface {
     fun getMarkerByNoted(
     ): Single<MarkerResponse>
 
+    @GET("marker/v1/distance")
+    fun getMarkerByDistance(
+        @Query("east_boundary") east_boundary:Double,
+        @Query("west_boundary") west_boundary:Double,
+        @Query("southern_boundary") southern_boundary:Double,
+        @Query("northern_boundary") northern_boundary:Double,
+    ): Single<MarkerResponse>
+
     @GET("addr/v1/addr")
     fun getAddr(
         @Query("addr1") addr1:String,

@@ -2,10 +2,7 @@ package com.ljy.domain.di
 
 import com.ljy.domain.repository.AddrRepository
 import com.ljy.domain.repository.MarkerRepository
-import com.ljy.domain.usecase.GetAddrUseCase
-import com.ljy.domain.usecase.GetMarkerByNameUseCase
-import com.ljy.domain.usecase.GetMarkerByNotedUseCase
-import com.ljy.domain.usecase.GetMarkerByRegionUseCase
+import com.ljy.domain.usecase.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,6 +35,12 @@ class UseCaseModule {
     @Singleton
     fun provideGetAddrUseCase(addrRepository: AddrRepository): GetAddrUseCase{
         return GetAddrUseCase(addrRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetMarkerByDistance(markerRepository: MarkerRepository): GetMarkerByDistanceUseCase{
+        return GetMarkerByDistanceUseCase(markerRepository)
     }
 
 }

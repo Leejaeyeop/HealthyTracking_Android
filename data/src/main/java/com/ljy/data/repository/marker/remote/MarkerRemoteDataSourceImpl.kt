@@ -24,6 +24,15 @@ class MarkerRemoteDataSourceImpl @Inject constructor(private val apiInterface: A
         return apiInterface.getMarkerByNoted()
     }
 
+    override fun getMarkersByDistance(
+        east_boundary: Double,
+        west_boundary: Double,
+        southern_boundary: Double,
+        northern_boundary: Double
+    ): Single<MarkerResponse> {
+        return apiInterface.getMarkerByDistance(east_boundary,west_boundary,southern_boundary,northern_boundary)
+    }
+
 
 }
 

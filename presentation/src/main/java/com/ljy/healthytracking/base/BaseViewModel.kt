@@ -1,10 +1,12 @@
 package com.ljy.healthytracking.base
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 
-abstract class BaseViewModel :ViewModel() {
+abstract class BaseViewModel (aplication:Application):AndroidViewModel(aplication) {
     protected val compositeDisposable = CompositeDisposable()
 
     fun addDisposable(disposable: Disposable) { // RxJava로 Obsevable을 Observing 할 때 사용할 함수이다
@@ -15,4 +17,5 @@ abstract class BaseViewModel :ViewModel() {
         compositeDisposable.clear()
         super.onCleared()
     }
+
 }
