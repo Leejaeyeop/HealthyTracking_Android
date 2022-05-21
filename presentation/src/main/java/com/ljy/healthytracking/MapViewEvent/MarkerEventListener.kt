@@ -1,11 +1,13 @@
 package com.ljy.healthytracking.MapViewEvent
 
 import android.content.Context
+import androidx.activity.viewModels
+import com.ljy.healthytracking.view.MainViewModel
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
 
-class MarkerEventListener(val context:Context): MapView.POIItemEventListener {
+class MarkerEventListener(val context:Context , val viewModel: MainViewModel ): MapView.POIItemEventListener {
 
     // 마커 클릭 시
     override fun onPOIItemSelected(p0: MapView?, p1: MapPOIItem?) {

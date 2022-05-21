@@ -1,26 +1,13 @@
 package com.ljy.healthytracking.view
 
-import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Color
-import android.location.Address
-import android.location.Geocoder
-import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
-import android.provider.Settings
-import android.util.Log
-import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.core.content.getSystemService
-import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
-import com.ljy.healthytracking.BR
 import com.ljy.healthytracking.MapViewEvent.MarkerEventListener
 import com.ljy.healthytracking.R
 import com.ljy.healthytracking.base.BaseActivity
@@ -28,13 +15,10 @@ import com.ljy.healthytracking.databinding.ActivityMainBinding
 import com.ljy.healthytracking.view.MainViewModel.Companion.addr1Entry
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
-import net.daum.mf.map.api.MapCircle
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
-import java.io.IOException
 import java.util.*
-import java.util.jar.Manifest
 import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
@@ -60,7 +44,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private lateinit var items3: ArrayList<String>
     private lateinit var locatioNManager: LocationManager
 
-    private val eventListener = MarkerEventListener(this)
+    private val eventListener = MarkerEventListener(this,viewModel)
     private var tost :Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,7 +52,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         mapView = MapView(this)
         mapViewContainer = findViewById(R.id.map_view)
         mapViewContainer.addView(mapView)
-        mapView.setPOIItemEventListener(eventListener) //마커 클릭 이벤트 러스너 등록록
+        mapView.setPOIItemEventListener(eventListener) //마커 클릭 이벤트 러스너 등록
+
 
 
         /*var circle1 = MapCircle(
@@ -117,14 +102,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             )
 
             addrChange.observe(this@MainActivity, Observer {
-
                 when (addrChange.value) {
                     1 -> { //주소 1 변경
                         binding.addr2.setSelection(0)
                     }
                     2 ->  //주소 2 변경
                         binding.addr3.setSelection(0)
-
                 }
             })
         }

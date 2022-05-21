@@ -48,8 +48,6 @@ interface ApiInterface {
         @Query("addr2") addr2:String,
     ): Single<AddrResponse>
 
-
-
     companion object{
         fun create(): ApiInterface {
             val logger = HttpLoggingInterceptor().apply {

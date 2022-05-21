@@ -16,9 +16,7 @@ class MarkerRepositoryImpl @Inject constructor(
         return markerRemoteDataSource.getMarkersByName(query)
             .flatMap {
                 Single.just(mapperToMarker(it.markers))
-
             }
-
     }
 
      override fun getMarkerByRegion(
@@ -29,7 +27,6 @@ class MarkerRepositoryImpl @Inject constructor(
          return markerRemoteDataSource.getMarkersByRegion(addr1, addr2, addr3)
              .flatMap {
                  Single.just(mapperToMarker(it.markers))
-
              }
      }
 
@@ -37,7 +34,6 @@ class MarkerRepositoryImpl @Inject constructor(
          return markerRemoteDataSource.getMarkersByNoted()
              .flatMap {
                  Single.just(mapperToMarker(it.markers))
-
              }
      }
 
