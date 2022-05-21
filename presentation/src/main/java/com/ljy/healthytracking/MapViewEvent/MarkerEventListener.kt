@@ -7,11 +7,13 @@ import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
 
+//viewmodel에 전달한다.
 class MarkerEventListener(val context:Context , val viewModel: MainViewModel ): MapView.POIItemEventListener {
 
     // 마커 클릭 시
     override fun onPOIItemSelected(p0: MapView?, p1: MapPOIItem?) {
-
+        //viewmodel 에도 이벤트를 만든다.
+        viewModel.onPOIItemSelected(p0 , p1)
     }
 
     // 말풍선 클릭 시 (Deprecated)

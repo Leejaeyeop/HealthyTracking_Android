@@ -26,6 +26,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
+import net.daum.mf.map.api.MapView
 import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
@@ -350,4 +351,10 @@ class MainViewModel @Inject constructor(
         }
         return currentLatLng!!
     }
+
+    //viewmodel 에도 이벤트를 만든다.
+    fun onPOIItemSelected(p0: MapView?, p1: MapPOIItem?) {
+
+    }
+
 }
